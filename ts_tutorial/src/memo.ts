@@ -60,3 +60,25 @@ const f: (foo: string)=> number = func;
 function func(arg: string): number {
   return Number(arg);
 }
+
+// void型
+// 主にに関数の返り値の型として使われ「何も返さない」ことを表す
+// JavaScriptでは何も返さない関数（return文が無い、もしくは返り値の無いreturn文で返る）はundefinedを返すことになっている
+// =void型というのはundefinedのみを値にとる型
+// その逆はできない、つまり「void型の値はundefined型の変数に代入できない」
+// const a: void = undefined;
+// エラー: Type 'void' is not assignable to type 'undefined'.
+// const b: undefined = a;
+
+// any型
+// any型は何でもありな型
+// つまりプログラマの敗北（=型システムを無視しているため）
+
+// クラスの型
+class Foo {
+  method(): void {
+    console.log('Hello, world!');
+  }
+}
+
+const obj: Foo = new Foo();
