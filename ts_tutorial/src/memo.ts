@@ -75,6 +75,7 @@ function func(arg: string): number {
 // つまりプログラマの敗北（=型システムを無視しているため）
 
 // クラスの型
+// この例では、クラスFooを定義したことで、Fooという型も同時に定義される
 class Foo {
   method(): void {
     console.log('Hello, world!');
@@ -82,3 +83,16 @@ class Foo {
 }
 
 const obj: Foo = new Foo();
+
+// ジェネリクス
+// 型名をFoo<S, T>のようにする
+// =名前のあとに< >で囲った名前の列を与えることで、型の定義の中でそれらの名前を型変数として使うことができる
+// interface Foo<S, T> {
+//   foo: S;
+//   bar: T;
+// }
+
+// const obj: Foo<number, string> = {
+//   foo: 3,
+//   bar: 'hi',
+// };
