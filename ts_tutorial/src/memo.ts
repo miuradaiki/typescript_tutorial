@@ -96,3 +96,21 @@ const obj: Foo = new Foo();
 //   foo: 3,
 //   bar: 'hi',
 // };
+
+// タプル型
+// タプル型は[string, number]のように書き複数の値を保持できる
+// const foo: [string, number] = ['foo', 5];
+
+// const str: string = foo[0];
+
+// function makePair(x: string, y: number): [string, number] {
+//   return [x, y];
+// }
+
+// 可変長タプル型は最後に...(配列型)という要素を書いたタプル型として表される
+// 例）type NumAndStrings = [number, ...string[]];
+// ただし、...を使えるのはタプル型のどこかに1回だけ
+
+// オプショナルな要素を持つタプル型
+// 例）type T = [string, number?];
+// この場合、numberはあってもなくてもいい
