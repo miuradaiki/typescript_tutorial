@@ -114,3 +114,58 @@ const obj: Foo = new Foo();
 // オプショナルな要素を持つタプル型
 // 例）type T = [string, number?];
 // この場合、numberはあってもなくてもいい
+
+// union型
+// union型は値が複数の型のどれかに当てはまるような型を表している
+let value: string | number = 'foo';
+
+// オブジェクト型でもunion型を作ることが可能
+interface HogeHoge {
+  foo: string;
+  bar: number;
+}
+interface PiyoPiyo {
+  foo: number;
+  baz: boolean;
+}
+
+type HogeHogePiyoPiyo = HogeHoge | PiyoPiyo;
+
+const unionObj: HogeHogePiyoPiyo = {
+  foo: 'hello',
+  bar: 0,
+};
+
+// intersection型
+// 2つの型T, Uに対してT & Uと書くと、TでもありUでもあるような型を表す
+interface Hoge {
+  foo: string;
+  bar: number;
+}
+interface Piyo {
+  foo: string;
+  baz: boolean;
+}
+
+const intersectionObj: Hoge & Piyo = {
+  foo: 'foooooooo',
+  bar: 3,
+  baz: true,
+};
+
+// オブジェクト型（再訪）
+// ?を付けて宣言したプロパティは省略可能になる
+// interface MyObj {
+//   foo: string;
+//   bar?: number;
+// }
+
+// let obj: MyObj = {
+//   foo: 'string',
+// };
+
+// obj = {
+//   foo: 'foo',
+//   bar: 100,
+// };
+
