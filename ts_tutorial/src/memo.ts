@@ -169,3 +169,39 @@ const intersectionObj: Hoge & Piyo = {
 //   bar: 100,
 // };
 
+// ?修飾子を付けられたプロパティを取得する場合は自動的にundefined型とのunion型になる
+function func(obj: MyObj): number {
+  return obj.bar !== undefined ? obj.bar * 100 : 0;
+}
+// このように使うときにはundefinedチェックが必要となる
+
+// exactOptionalPropertyTypesコンパイラオプション
+// デフォルトではこのオプションは無効
+// このオプションが無効の場合は、bar?: number;というのはbar?: number | undefined;と書いたのと同じ意味になる
+// オプショナルなプロパティには明示的にundefinedを入れることができる
+
+// exactOptionalPropertyTypesが有効の場合
+// オプショナルなプロパティにundefinedを入れることができなくなる
+
+
+// 修飾子：readonly
+// これを付けて宣言されたプロパティは再代入できなくなる
+// ただし、readonlyでない型を経由して書き換えできるので注意
+
+
+// asによるダウンキャスト
+// 式 as 型と書く
+// 型安全ではないが、たまに必要となる場面がある
+// ダウンキャストというのは、派生型の値を部分型として扱うためのもの
+const value = rand();
+
+const str = value as number;
+console.log(str * 10);
+
+function rand(): string | number {
+    if (Math.random() < 0.5) {
+        return 'hello';
+    } else {
+        return 123;
+    }
+}
