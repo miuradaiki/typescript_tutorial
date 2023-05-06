@@ -205,3 +205,22 @@ function rand(): string | number {
         return 123;
     }
 }
+
+// readonlyな配列とタプル
+// arrは readonly number[] 型
+const arr: readonly number[] = [1, 2, 3];
+
+// arrの要素を書き換えるのは型エラー
+// エラー: Index signature in type 'readonly number[]' only permits reading.
+arr[0] = 100;
+
+// readonly配列型にはpushなどの書き換えメソッドは存在しない
+// エラー: Property 'push' does not exist on type 'readonly number[]'
+arr.push(4);
+
+// readonlyな配列のプロパティを書き換えようとするとエラーになる
+
+// readonlyなタプルについても同様に、タプル型の前にreadonlyを付けて表現します。
+const tuple: readonly [string, number] = ['foo', 123];
+// エラー: Cannot assign to '0' because it is a read-only property.
+tuple[0] = 'bar';
